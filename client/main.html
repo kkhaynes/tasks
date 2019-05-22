@@ -1,0 +1,115 @@
+<head>
+  <title>todoList</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    {{> editTodo}}
+    {{> top}}
+    {{> main}}
+   </div>
+  <div class="parallax2"></div>
+</body>
+
+<template name="top">
+  <div class="row top">
+    <div class="col">
+      <h3 class= "title">Todo List ({{tasksFound}})</h3>
+    </div>
+
+    <div class="col-auto">
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" type="checkbox" value="" id="hide">
+        <label class="custom-control-label" for="hide">Hide Completed Tasks</label>
+      </div>
+    </div>
+    
+    <div class="w-100"></div>
+
+    <div class="col-11 mb-3">
+      {{> loginButtons}}
+    </div>
+
+    <div class="col-auto">
+      <input type="text" class="form-control" id="newTask" aria-describedby="addNew" placeholder="Type to add new task">
+    </div>
+
+    <div class="col-auto">
+          
+          {{#if currentUser}} 
+      <button type="submit" class="btn btn-primary js-submit">Submit</button>
+               {{/if}}
+
+    </div>
+  </div>
+                {{#if currentUser}} 
+                <ul class= "collection">
+                  {{#each Task}}
+                    {{> Task}}
+                  {{/each}}
+                </ul>
+
+                {{else}}
+                
+                <p>Please Sign in to Manage To-Do Tasks</p>
+                
+                {{/if}}
+
+</template>
+
+<template name="main">
+  {{#each mainAll}}
+  <div class="row main" id="{{_id}}">
+
+      <div class="col-auto">      
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" value="" id="task{{_id}}">
+          <label class="custom-control-label" for="task{{_id}}">{{task}}</label>
+        </div>
+      </div>
+
+      <div class="col-auto">
+        <small class="text-muted">{{taskAge}}</small>
+        <small>Posted by <a href="#" id={{userId}} class="usrClick">{{userLoggedIn}}</a></small>
+      </div>
+
+
+      <div class="col-auto">
+        <i class="zmdi zmdi-close-circle js-delete"></i>
+      </div>
+
+      <div class="col-auto">
+        <i class="zmdi zmdi-edit js-edit" data-toggle="modal" data-target="#editTodo"></i>
+      </div>
+  </div>
+  {{/each}}
+
+</template>
+
+<template name="editTodo">
+  <div class="modal fade" id="editTodo" tabindex="-1" role="dialog" aria-labelledby="editTodoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editTodoTitle">Edit Todo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Change Todo</span>
+          </div>
+          <input type="text" id="changeTodo" class="form-control" placeholder="Type Change..." aria-label="changeTodoLabel" aria-describedby="basic-addon1">
+          <input type="text" id="editTodoID">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary js-editSave">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template>

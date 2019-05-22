@@ -1,0 +1,55 @@
+body {
+  font-family: sans-serif;
+  background-color: #315481;
+  background-image: linear-gradient(to bottom, #000000, #000000 100%);
+  background-attachment: fixed;
+ 
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ 
+  padding: 0;
+  margin: 0;
+  color: white;
+ 
+  font-size: 14px;
+}
+
+body, html {
+  height: 100%;
+}
+
+.top {
+    background-color: #000000;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-image: linear-gradient(to bottom, #da6f05, #000000 95%);
+    background-position: center;
+}
+
+.main {
+	font-size: 1.1em;
+	padding-bottom: 1em;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #000000;
+    border-color: #d06a05;
+}
+
+.btn-primary:hover {
+    color: #000;
+    background-color: #ffffff;
+    border-color: #d26b05;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #000000;
+}
+body {
+  padding: 10px;
+  font-family: sans-serif;
+}
